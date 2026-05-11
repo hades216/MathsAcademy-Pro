@@ -1,154 +1,137 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, Play, BookOpen, BarChart3, Users } from 'lucide-react';
+import { LogIn, TrendingUp, ShieldCheck, Award, MessageSquareQuote, Play } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white">
+    <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32 bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left"
+      <section className="relative min-h-[80vh] flex items-center justify-center pt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="relative z-10 text-center max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative"
             >
-              <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-mymaths-blue/10 text-mymaths-blue mb-4">
-                Trusted by over 4 million students
-              </span>
-              <h1 className="text-4xl tracking-tight font-black text-mymaths-dark sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-                <span className="block">Your experience,</span>
-                <span className="block text-mymaths-blue">our expertise.</span>
+              {/* 3D Floating Decorative Element */}
+              <motion.div
+                animate={{ 
+                  y: [0, -30, 0],
+                  rotateX: [10, -10, 10],
+                  rotateY: [10, -10, 10]
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-indigo-500/5 rounded-[4rem] border border-white/5 preserve-3d -z-10 blur-sm hidden md:block"
+              />
+              
+              <h1 className="text-7xl md:text-9xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                Advanced Maths. <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-indigo-400">Simplified Results.</span>
               </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                MyMaths provides a fully-randomised online homework system, interactive lessons, and automated marking for schools. Perfect for KS1 through to A Level.
-              </p>
-              <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0 flex flex-wrap gap-4">
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-xl md:text-3xl text-slate-400 font-bold mb-12 max-w-3xl mx-auto leading-relaxed"
+              >
+                The UK's most trusted mathematics platform, designed for modern schools and high-performing students.
+              </motion.p>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-6"
+              >
+                <button 
+                  onClick={() => navigate('/get-started')}
+                  className="w-full sm:w-auto btn-primary text-2xl px-12 py-6 flex items-center justify-center gap-4"
+                >
+                  Get Started <Play className="w-7 h-7" />
+                </button>
                 <button 
                   onClick={() => navigate('/login/school')}
-                  className="btn-primary text-lg px-8 py-3"
+                  className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 px-12 py-6 rounded-2xl font-bold text-2xl backdrop-blur-xl transition-all flex items-center justify-center gap-4"
                 >
-                  Get Started
+                  School Login <LogIn className="w-7 h-7" />
                 </button>
-                <button className="btn-outline text-lg px-8 py-3 flex items-center gap-2">
-                  <Play className="w-5 h-5 fill-current" />
-                  Watch Demo
-                </button>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
-            >
-              <div className="relative mx-auto w-full rounded-2xl shadow-2xl overflow-hidden border-8 border-white">
-                <img
-                  className="w-full"
-                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200"
-                  alt="Student using MyMaths"
-                />
-                <div className="absolute inset-0 bg-mymaths-blue/10 flex items-center justify-center">
-                  <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl text-mymaths-blue hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 fill-current ml-1" />
-                  </button>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Feature Grid */}
-      <section className="py-20 bg-white">
+      {/* Impact & Evidence Section */}
+      <section className="py-32 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-black text-mymaths-dark sm:text-4xl">Why choose MyMaths?</h2>
-            <p className="mt-4 text-xl text-gray-500">Everything you need to inspire a love of mathematics.</p>
-          </div>
+           <div className="text-center mb-24">
+             <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Academic <span className="text-gradient">Excellence</span></h2>
+             <p className="text-2xl text-slate-400 font-bold max-w-3xl mx-auto">Empowering over 80% of UK secondary schools with data-driven learning tools.</p>
+           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard 
-              icon={<BookOpen className="w-8 h-8 text-white" />}
-              title="Flexible"
-              description="A huge library of interactive lessons and homework tasks for all ages and abilities."
-              color="bg-mymaths-blue"
-            />
-            <FeatureCard 
-              icon={<BarChart3 className="w-8 h-8 text-white" />}
-              title="Limitless homework practice"
-              description="Randomised questions mean students can practice tasks as many times as they need."
-              color="bg-mymaths-green"
-            />
-            <FeatureCard 
-              icon={<Users className="w-8 h-8 text-white" />}
-              title="You're in control"
-              description="Track progress easily with our automated marking and traffic-light results system."
-              color="bg-mymaths-orange"
-            />
-          </div>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <ImpactCard 
+                icon={<TrendingUp className="w-10 h-10 text-blue-400" />}
+                title="Performance"
+                stat="23%"
+                description="Average increase in attainment after just one term of active platform use."
+              />
+              <ImpactCard 
+                icon={<ShieldCheck className="w-10 h-10 text-indigo-400" />}
+                title="Efficiency"
+                stat="4hrs"
+                description="Weekly time saved by teachers through automated marking and reporting."
+              />
+              <ImpactCard 
+                icon={<Award className="w-10 h-10 text-blue-500" />}
+                title="Compliance"
+                stat="100%"
+                description="Strictly aligned with the National Curriculum and latest Ofsted requirements."
+              />
+           </div>
         </div>
       </section>
 
-      {/* Curriculum Section */}
-      <section className="py-20 bg-slate-50">
+      {/* Testimonials */}
+      <section className="py-32 bg-slate-900/50 backdrop-blur-3xl border-y border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:flex lg:items-center lg:gap-16">
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl font-black text-mymaths-dark mb-6">Complete curriculum coverage</h2>
-              <p className="text-lg text-gray-600 mb-8">
-                From the early years of Primary school to the challenges of A Level, MyMaths supports the entire mathematical journey.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Primary (KS1 & KS2)",
-                  "Secondary (KS3, GCSE & IGCSE)",
-                  "Post-16 (A Level & IB)",
-                  "Booster packs for revision",
-                  "Games and engagement tools"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-mymaths-green" />
-                    <span className="font-semibold text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className="mt-10 btn-primary flex items-center gap-2">
-                Explore the library <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="lg:w-1/2 mt-12 lg:mt-0 grid grid-cols-2 gap-4">
-              <div className="space-y-4 pt-8">
-                <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                  <div className="w-12 h-12 bg-mymaths-blue rounded-xl mb-4 flex items-center justify-center text-white font-bold">1</div>
-                  <h3 className="font-bold text-lg mb-2">Interactive</h3>
-                  <p className="text-sm text-gray-500">Engaging lessons with animations and tools.</p>
-                </div>
-                <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                  <div className="w-12 h-12 bg-mymaths-green rounded-xl mb-4 flex items-center justify-center text-white font-bold">2</div>
-                  <h3 className="font-bold text-lg mb-2">Instant</h3>
-                  <p className="text-sm text-gray-500">Marking and feedback provided immediately.</p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                  <div className="w-12 h-12 bg-mymaths-orange rounded-xl mb-4 flex items-center justify-center text-white font-bold">3</div>
-                  <h3 className="font-bold text-lg mb-2">Tracking</h3>
-                  <p className="text-sm text-gray-500">Powerful dashboards for teachers and students.</p>
-                </div>
-                <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                  <div className="w-12 h-12 bg-mymaths-dark rounded-xl mb-4 flex items-center justify-center text-white font-bold">4</div>
-                  <h3 className="font-bold text-lg mb-2">Results</h3>
-                  <p className="text-sm text-gray-500">Comprehensive reports at your fingertips.</p>
-                </div>
-              </div>
-            </div>
+           <h2 className="text-5xl font-black text-white text-center mb-24 tracking-tighter">Trusted by <span className="text-gradient">Educators</span></h2>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <Testimonial 
+                quote="The platform has completely transformed how we manage homework. The clean interface and robust data sets are invaluable."
+                author="Sarah Jenkins"
+                role="Head of Maths, St. Peters Academy"
+              />
+              <Testimonial 
+                quote="The automated feedback loop is exceptional. It allows for immediate intervention and personalized learning at scale."
+                author="David Chen"
+                role="KS2 Coordinator, Lincoln Primary"
+              />
+           </div>
+        </div>
+      </section>
+
+      {/* Pricing Preview */}
+      <section id="pricing" className="py-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Choose Your <span className="text-gradient">Tier</span></h2>
+          <p className="text-2xl text-slate-400 font-bold max-w-3xl mx-auto">Scalable solutions for individual schools and large trusts.</p>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+             <PricingCard title="Primary" price="£640" features={["Full Primary Curriculum", "Home Access", "Central Reporting"]} />
+             <PricingCard title="Secondary" price="£895" features={["KS3, GCSE & A-Level", "Exam Practice", "Detailed Analytics"]} featured />
+             <PricingCard title="Trust" price="Custom" features={["Multi-School Dashboard", "Dedicated Support", "Strategic Insights"]} />
+          </div>
+          <div className="mt-16 text-center">
+            <button onClick={() => navigate('/pricing')} className="btn-outline px-12 py-5 text-xl">View Full Pricing Schedule</button>
           </div>
         </div>
       </section>
@@ -156,17 +139,41 @@ const Home: React.FC = () => {
   );
 };
 
-const FeatureCard = ({ icon, title, description, color }: { icon: React.ReactNode, title: string, description: string, color: string }) => (
-  <motion.div 
-    whileHover={{ y: -5 }}
-    className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex flex-col items-center text-center"
-  >
-    <div className={`w-16 h-16 ${color} rounded-2xl flex items-center justify-center mb-6 shadow-inner`}>
-      {icon}
+const ImpactCard = ({ icon, title, stat, description }: any) => (
+  <div className="ui-card p-12 group">
+    <div className="flex items-center justify-between mb-8">
+      <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-indigo-500/10 transition-all">
+        {icon}
+      </div>
+      <div className="text-5xl font-black text-white tracking-tighter">{stat}</div>
     </div>
-    <h3 className="text-2xl font-black text-mymaths-dark mb-4">{title}</h3>
-    <p className="text-gray-500 leading-relaxed">{description}</p>
-  </motion.div>
+    <h3 className="text-2xl font-black text-white mb-4">{title}</h3>
+    <p className="text-lg text-slate-400 font-bold leading-relaxed">{description}</p>
+  </div>
+);
+
+const Testimonial = ({ quote, author, role }: any) => (
+  <div className="ui-card p-12 relative">
+    <MessageSquareQuote className="absolute top-8 right-8 w-12 h-12 text-white/5" />
+    <p className="text-2xl text-white font-bold italic mb-8 leading-relaxed">"{quote}"</p>
+    <div>
+      <div className="font-black text-indigo-400 text-xl">{author}</div>
+      <div className="text-slate-500 font-bold">{role}</div>
+    </div>
+  </div>
+);
+
+const PricingCard = ({ title, price, features, featured }: any) => (
+  <div className={`ui-card p-10 flex flex-col text-center ${featured ? 'border-indigo-500/50 shadow-2xl' : ''}`}>
+    <h3 className="text-2xl font-black text-white mb-4">{title}</h3>
+    <div className="text-5xl font-black text-white mb-8">{price} <span className="text-sm text-slate-500">/ yr</span></div>
+    <ul className="space-y-4 mb-10 flex-grow">
+      {features.map((f: string) => (
+        <li key={f} className="text-slate-400 font-bold">{f}</li>
+      ))}
+    </ul>
+    <button className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${featured ? 'bg-indigo-600 text-white' : 'bg-white/5 text-white border border-white/10'}`}>Get Started</button>
+  </div>
 );
 
 export default Home;

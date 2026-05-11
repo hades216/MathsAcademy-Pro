@@ -1,76 +1,81 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Share2, Camera, Video, Mail } from 'lucide-react';
+import { Mail, Phone, MapPin, Sparkles, Share2, Globe, Heart, Bell } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-mymaths-dark text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-white/5 backdrop-blur-xl border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
+      {/* Background Starfield for Footer */}
+      <div className="absolute inset-0 stars opacity-10 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
           {/* Brand */}
-          <div>
-            <div className="flex items-center gap-1 mb-6">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-mymaths-dark font-bold text-xl">M</div>
-              <span className="text-xl font-black tracking-tighter text-white">MyMaths</span>
+          <div className="col-span-1 md:col-span-1">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-indigo-500/20">
+                <Sparkles className="w-7 h-7" />
+              </div>
+              <span className="text-3xl font-black tracking-tighter text-white">Maths</span>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Providing expert maths resources for over 20 years. Part of the Oxford University Press family.
+            <p className="text-indigo-100/40 text-lg font-bold leading-relaxed mb-8">
+              Empowering the next generation of explorers with stellar mathematical skills.
             </p>
             <div className="flex gap-4">
               <SocialIcon icon={<Globe className="w-5 h-5" />} />
               <SocialIcon icon={<Share2 className="w-5 h-5" />} />
-              <SocialIcon icon={<Camera className="w-5 h-5" />} />
-              <SocialIcon icon={<Video className="w-5 h-5" />} />
+              <SocialIcon icon={<Heart className="w-5 h-5" />} />
+              <SocialIcon icon={<Bell className="w-5 h-5" />} />
             </div>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-bold text-lg mb-6">Resources</h4>
+            <h4 className="text-white font-black text-xl mb-8 uppercase tracking-widest">Sectors</h4>
             <ul className="space-y-4">
-              <FooterLink to="/library">Content Library</FooterLink>
-              <FooterLink to="/">Sample Lessons</FooterLink>
-              <FooterLink to="/">Case Studies</FooterLink>
-              <FooterLink to="/">News</FooterLink>
+              <FooterLink to="/">Mission Control</FooterLink>
+              <FooterLink to="/library">Stellar Library</FooterLink>
+              <FooterLink to="/">Star Map</FooterLink>
+              <FooterLink to="/">Fleet Academy</FooterLink>
             </ul>
           </div>
 
-          {/* Support */}
           <div>
-            <h4 className="font-bold text-lg mb-6">Support</h4>
+            <h4 className="text-white font-black text-xl mb-8 uppercase tracking-widest">Crew Resources</h4>
             <ul className="space-y-4">
-              <FooterLink to="/">Help Center</FooterLink>
-              <FooterLink to="/">System Requirements</FooterLink>
-              <FooterLink to="/">Contact Us</FooterLink>
-              <FooterLink to="/">Accessibility</FooterLink>
+              <FooterLink to="/">Deck Support</FooterLink>
+              <FooterLink to="/">Training Logs</FooterLink>
+              <FooterLink to="/">Privacy Protocol</FooterLink>
+              <FooterLink to="/">Terms of Service</FooterLink>
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact */}
           <div>
-            <h4 className="font-bold text-lg mb-6">Stay Updated</h4>
-            <p className="text-sm text-gray-400 mb-4">Get the latest news and updates from MyMaths.</p>
-            <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="bg-gray-800 border-none rounded-l-lg px-4 py-2 w-full focus:ring-1 focus:ring-mymaths-blue"
-              />
-              <button className="bg-mymaths-blue hover:bg-blue-600 rounded-r-lg px-4 py-2 transition-colors">
-                <Mail className="w-5 h-5" />
-              </button>
-            </div>
+            <h4 className="text-white font-black text-xl mb-8 uppercase tracking-widest">Transmission</h4>
+            <ul className="space-y-6">
+              <li className="flex items-start gap-4 text-indigo-100/40 font-bold group cursor-pointer">
+                <Mail className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform" />
+                <span>support@maths.galaxy</span>
+              </li>
+              <li className="flex items-start gap-4 text-indigo-100/40 font-bold group cursor-pointer">
+                <Phone className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform" />
+                <span>+44 800 GALAXY</span>
+              </li>
+              <li className="flex items-start gap-4 text-indigo-100/40 font-bold group cursor-pointer">
+                <MapPin className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform" />
+                <span>Nebula Sector 7, Orbital Station</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} MyMaths by Oxford University Press. All rights reserved.
-          </p>
-          <div className="flex gap-6 text-sm text-gray-500">
-            <Link to="/" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/" className="hover:text-white transition-colors">Terms of Use</Link>
-            <Link to="/" className="hover:text-white transition-colors">Legal</Link>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-indigo-100/20 font-bold">© 2026 Maths Galaxy Platform. All rights reserved.</p>
+          <div className="flex gap-8 text-indigo-100/20 font-bold text-sm">
+            <a href="#" className="hover:text-indigo-400 transition-colors">Privacy</a>
+            <a href="#" className="hover:text-indigo-400 transition-colors">Cookies</a>
+            <a href="#" className="hover:text-indigo-400 transition-colors">Accessibility</a>
           </div>
         </div>
       </div>
@@ -78,18 +83,21 @@ const Footer: React.FC = () => {
   );
 };
 
-const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
-  <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-mymaths-blue transition-all">
-    {icon}
-  </a>
-);
-
 const FooterLink = ({ to, children }: { to: string, children: React.ReactNode }) => (
   <li>
-    <Link to={to} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all inline-block">
+    <Link to={to} className="text-indigo-100/40 hover:text-white font-bold transition-all flex items-center gap-2 group">
+      <div className="w-1.5 h-1.5 bg-indigo-500/20 rounded-full group-hover:bg-indigo-400 transition-colors"></div>
       {children}
     </Link>
   </li>
+);
+
+const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
+  <button className="w-12 h-12 bg-white/5 hover:bg-indigo-500/20 text-indigo-400 hover:text-white rounded-xl flex items-center justify-center transition-all border border-white/10 group">
+    <div className="group-hover:scale-110 transition-transform">
+      {icon}
+    </div>
+  </button>
 );
 
 export default Footer;

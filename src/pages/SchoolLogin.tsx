@@ -1,85 +1,79 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { School, ArrowRight, Lock } from 'lucide-react';
+import { Shield, ArrowRight, Lock, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const SchoolLogin: React.FC = () => {
-  const [schoolId, setSchoolId] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate school login
-    if (schoolId && password) {
-      localStorage.setItem('school_auth', 'true');
-      navigate('/library');
-    }
+    localStorage.setItem('school_auth', 'true');
+    navigate('/library');
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 px-4 py-12">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-20 relative">
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-md w-full bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="w-full max-w-xl galaxy-card p-16 shadow-[0_0_100px_rgba(99,102,241,0.2)]"
       >
-        <div className="bg-mymaths-dark p-8 text-white text-center">
-          <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <School className="w-8 h-8 text-white" />
+        <div className="text-center mb-12">
+          <div className="w-24 h-24 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-2xl border-4 border-white/10 group">
+             <Shield className="w-12 h-12 text-white group-hover:rotate-12 transition-transform" />
           </div>
-          <h2 className="text-3xl font-black">School Login</h2>
-          <p className="text-mymaths-light mt-2">Enter your school credentials to access MyMaths</p>
+          <h2 className="text-5xl font-black text-white mb-4">Mission Entrance</h2>
+          <p className="text-xl text-indigo-100/40 font-bold uppercase tracking-widest">School Fleet Access</p>
         </div>
-        
-        <form onSubmit={handleLogin} className="p-8 space-y-6">
-          <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-700">School Username</label>
-            <div className="relative">
-              <input 
-                type="text" 
-                value={schoolId}
-                onChange={(e) => setSchoolId(e.target.value)}
-                placeholder="e.g. oxford123"
-                className="w-full pl-4 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-mymaths-blue focus:border-transparent transition-all outline-none"
+
+        <form onSubmit={handleLogin} className="space-y-8">
+          <div className="space-y-6">
+            <div className="relative group">
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Fleet ID (Username)"
+                className="w-full pl-14 pr-8 py-5 bg-white/5 border-2 border-white/10 rounded-2xl text-white text-lg font-bold focus:border-indigo-500 focus:ring-8 focus:ring-indigo-500/10 outline-none transition-all placeholder:text-white/10"
                 required
               />
+              <User className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-indigo-400 group-focus-within:scale-110 transition-transform" />
             </div>
-          </div>
-          
-          <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-700">School Password</label>
-            <div className="relative">
-              <input 
-                type="password" 
+
+            <div className="relative group">
+              <input
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full pl-4 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-mymaths-blue focus:border-transparent transition-all outline-none"
+                placeholder="Access Key (Password)"
+                className="w-full pl-14 pr-8 py-5 bg-white/5 border-2 border-white/10 rounded-2xl text-white text-lg font-bold focus:border-indigo-500 focus:ring-8 focus:ring-indigo-500/10 outline-none transition-all placeholder:text-white/10"
                 required
               />
-              <Lock className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-indigo-400 group-focus-within:scale-110 transition-transform" />
             </div>
           </div>
-          
-          <button 
+
+          <button
             type="submit"
-            className="w-full bg-mymaths-blue hover:bg-mymaths-dark text-white font-black py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
+            className="w-full btn-primary text-2xl py-6 flex items-center justify-center gap-4 shadow-2xl"
           >
-            Log in to school <ArrowRight className="w-5 h-5" />
+            Launch to Library <ArrowRight className="w-6 h-6" />
           </button>
-          
-          <div className="text-center pt-4">
-            <a href="#" className="text-sm font-bold text-mymaths-blue hover:underline">Forgotten your login?</a>
-          </div>
         </form>
-        
-        <div className="bg-gray-50 p-6 text-center border-t border-gray-100">
-          <p className="text-sm text-gray-500">
-            Looking for <button onClick={() => navigate('/login/teacher')} className="text-mymaths-blue font-bold hover:underline">Teacher Dashboard</button>?
+
+        <div className="mt-12 pt-12 border-t border-white/5 text-center">
+          <p className="text-indigo-100/30 font-bold text-lg">
+            Forgot your keys? <button className="text-indigo-400 hover:underline">Contact Fleet Command</button>
           </p>
         </div>
       </motion.div>
+      
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/2 left-10 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full animate-pulse"></div>
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-purple-500/10 blur-3xl rounded-full animate-pulse"></div>
     </div>
   );
 };

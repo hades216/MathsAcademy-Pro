@@ -32,7 +32,7 @@ const Home: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="text-7xl md:text-[10rem] font-black text-brand-text mb-8 tracking-tighter leading-[0.85] font-sans">
+              <h1 className="text-5xl sm:text-7xl lg:text-[9rem] xl:text-[10rem] font-black text-brand-text mb-6 sm:mb-8 tracking-tighter leading-[0.85] font-sans">
                 Mastering <br />
                 <span className="text-gradient-lime">Mathematics.</span>
               </h1>
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="text-2xl md:text-4xl text-brand-muted font-medium mb-16 max-w-3xl mx-auto leading-tight"
+                className="text-lg sm:text-2xl md:text-4xl text-brand-muted font-medium mb-12 sm:mb-16 max-w-3xl mx-auto leading-tight px-4"
               >
                 The UK's premier digital curriculum, optimized for <br className="hidden md:block" /> exceptional student attainment.
               </motion.p>

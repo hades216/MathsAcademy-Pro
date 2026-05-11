@@ -30,11 +30,11 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-5 group">
-            <div className="w-16 h-16 bg-emerald-600 rounded-[1.5rem] flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-6">
-              <BookOpen className="w-9 h-9" />
+          <Link to="/" className="flex items-center gap-3 sm:gap-5 group">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-emerald-600 rounded-2xl sm:rounded-[1.5rem] flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-6">
+              <BookOpen className="w-7 h-7 sm:w-9 sm:h-9" />
             </div>
-            <span className="text-4xl font-black tracking-tighter text-brand-text">MathsAcademy</span>
+            <span className="text-2xl sm:text-4xl font-black tracking-tighter text-brand-text">MathsAcademy</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -80,12 +80,12 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-brand-bg/98 backdrop-blur-3xl border-b border-black/5 dark:border-white/5 p-12 space-y-10 shadow-3xl">
-          <Link to="/" className="block text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/library" className="block text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Curriculum</Link>
-          <Link to="/pricing" className="block text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
-          <div className="pt-10 border-t border-black/5 space-y-8">
-            <button className="w-full btn-primary py-7 text-3xl">School Access</button>
+        <div className="lg:hidden absolute top-full left-0 w-full bg-brand-bg/98 backdrop-blur-3xl border-b border-black/5 dark:border-white/5 p-6 sm:p-12 space-y-6 sm:space-y-10 shadow-3xl">
+          <Link to="/" className="block text-3xl sm:text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to="/library" className="block text-3xl sm:text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Curriculum</Link>
+          <Link to="/pricing" className="block text-3xl sm:text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
+          <div className="pt-8 sm:pt-10 border-t border-black/5 space-y-6 sm:space-y-8">
+            <button className="w-full btn-primary py-5 sm:py-7 text-2xl sm:text-3xl">School Access</button>
           </div>
         </div>
       )}

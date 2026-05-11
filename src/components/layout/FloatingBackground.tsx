@@ -13,13 +13,8 @@ const FloatingBackground: React.FC = () => {
     { name: 'Uranus', dist: 450, size: 12, color: '#67e8f9', speed: 60 },
     { name: 'Neptune', dist: 510, size: 11, color: '#4f46e5', speed: 70 },
   ];
-
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#020617]">
-      {/* Professional Architectural Grids */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:100px_100px] opacity-[0.1]"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:20px_20px] opacity-[0.05]"></div>
-
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-brand-bg transition-colors duration-1000">
       {/* Star Field */}
       <div className="absolute inset-0">
         {[...Array(200)].map((_, i) => (

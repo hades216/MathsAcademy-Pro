@@ -27,20 +27,20 @@ const Library: React.FC = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl font-black text-white mb-8 tracking-tighter"
+            className="text-6xl font-black text-brand-text mb-8 tracking-tighter"
           >
             Digital <span className="text-gradient">Curriculum</span>
           </motion.h1>
           
           <div className="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between">
             <div className="relative w-full lg:max-w-xl">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20 w-6 h-6" />
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-brand-text/20 w-6 h-6" />
               <input 
                 type="text"
                 placeholder="Search modules, keywords..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-5 pl-16 pr-8 text-xl text-white outline-none focus:border-indigo-500 transition-all"
+                className="w-full bg-white/5 border border-white/10 rounded-xl py-5 pl-16 pr-8 text-xl text-brand-text outline-none focus:border-emerald-500 transition-all"
               />
             </div>
 
@@ -49,7 +49,7 @@ const Library: React.FC = () => {
                 <button
                   key={level}
                   onClick={() => setActiveLevel(level)}
-                  className={`px-8 py-2.5 rounded-lg font-bold text-lg transition-all capitalize ${activeLevel === level ? 'bg-indigo-600 text-white' : 'text-white/40 hover:text-white'}`}
+                  className={`px-8 py-2.5 rounded-lg font-bold text-lg transition-all capitalize ${activeLevel === level ? 'bg-emerald-600 text-white' : 'text-brand-text/40 hover:text-brand-text'}`}
                 >
                   {level}
                 </button>
@@ -63,7 +63,7 @@ const Library: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-lg font-bold transition-all border ${activeCategory === cat ? 'bg-white text-slate-900 border-white' : 'bg-white/5 text-white/40 border-white/10 hover:border-white/30'}`}
+              className={`px-6 py-2.5 rounded-lg font-bold transition-all border ${activeCategory === cat ? 'bg-brand-text text-brand-deep border-brand-text' : 'bg-white/5 text-brand-text/40 border-white/10 hover:border-white/30'}`}
             >
               {cat}
             </button>
@@ -86,7 +86,7 @@ const Library: React.FC = () => {
 
         {filteredTopics.length === 0 && (
           <div className="text-center py-32 opacity-20">
-            <p className="text-3xl font-black text-white uppercase tracking-widest">No modules matching your criteria</p>
+            <p className="text-3xl font-black text-brand-text uppercase tracking-widest">No modules matching your criteria</p>
           </div>
         )}
       </div>
@@ -107,24 +107,24 @@ const TopicCard = ({ topic, index, onLesson, onHomework }: { topic: Topic, index
       <div className="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center text-3xl border border-white/10">
         {topic.icon}
       </div>
-      <div className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${topic.level === 'primary' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20'}`}>
+      <div className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${topic.level === 'primary' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'}`}>
         {topic.level}
       </div>
     </div>
 
-    <h3 className="text-2xl font-black text-white mb-3">{topic.title}</h3>
-    <p className="text-slate-400 font-bold mb-10 flex-grow leading-relaxed">{topic.description}</p>
+    <h3 className="text-2xl font-black text-brand-text mb-3">{topic.title}</h3>
+    <p className="text-brand-muted font-bold mb-10 flex-grow leading-relaxed">{topic.description}</p>
 
     <div className="space-y-4">
       <button 
         onClick={onLesson}
-        className="w-full flex items-center justify-between px-8 py-4 bg-indigo-600 text-white rounded-xl font-bold transition-all hover:bg-indigo-700 active:scale-95 group/btn"
+        className="w-full flex items-center justify-between px-8 py-4 bg-emerald-600 text-white rounded-xl font-bold transition-all hover:bg-emerald-700 active:scale-95 group/btn"
       >
         Open Lesson <Play className="w-4 h-4" />
       </button>
       <button 
         onClick={onHomework}
-        className="w-full flex items-center justify-between px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold border border-white/10 transition-all active:scale-95"
+        className="w-full flex items-center justify-between px-8 py-4 bg-white/5 hover:bg-white/10 text-brand-text rounded-xl font-bold border border-white/10 transition-all active:scale-95"
       >
         View Homework <ChevronRight className="w-4 h-4" />
       </button>

@@ -18,7 +18,7 @@ import FloatingBackground from './components/layout/FloatingBackground';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-brand-bg text-white relative overflow-hidden font-sans">
+      <div className="min-h-screen flex flex-col bg-brand-bg text-brand-text relative overflow-hidden font-sans">
         <FloatingBackground />
 
         <div className="relative z-10 flex flex-col min-h-screen">

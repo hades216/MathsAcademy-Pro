@@ -1,46 +1,43 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const FloatingBackground: React.FC = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  const springX = useSpring(mouseX, { stiffness: 20, damping: 40 });
+  const springY = useSpring(mouseY, { stiffness: 20, damping: 40 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX - window.innerWidth / 2);
+      mouseY.set(e.clientY - window.innerHeight / 2);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-brand-bg transition-colors duration-1000">
-      {/* Animated Aurora Gradients */}
-      <div className="absolute inset-0 opacity-50 dark:opacity-40">
-        <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-indigo-500/30 to-transparent blur-[150px] animate-aurora"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[70%] h-[70%] rounded-full bg-gradient-to-tl from-purple-500/20 to-transparent blur-[150px] animate-aurora [animation-delay:2s]"></div>
-        <div className="absolute top-[20%] right-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-bl from-blue-500/20 to-transparent blur-[120px] animate-aurora [animation-delay:4s]"></div>
+      {/* Light-Friendly Aurora Gradients */}
+      <div className="absolute inset-0 opacity-40 dark:opacity-30">
+        <motion.div 
+          style={{ x: springX, y: springY }}
+          className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-emerald-400/20 dark:bg-emerald-500/20 blur-[140px] animate-aurora"
+        />
+        <motion.div 
+          className="absolute -bottom-[10%] -right-[10%] w-[70%] h-[70%] rounded-full bg-yellow-400/10 dark:bg-yellow-500/10 blur-[160px] animate-aurora [animation-delay:5s]"
+        />
+        <motion.div 
+          className="absolute top-[20%] right-[10%] w-[50%] h-[50%] rounded-full bg-blue-400/5 dark:bg-blue-500/5 blur-[120px] animate-aurora [animation-delay:10s]"
+        />
       </div>
 
-      {/* Floating 3D-ish Shapes */}
-      <div className="absolute inset-0 perspective-[1000px]">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02] backdrop-blur-sm rounded-3xl preserve-3d shadow-2xl"
-            style={{
-              width: Math.random() * 150 + 50,
-              height: Math.random() * 150 + 50,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              rotateX: [0, 360],
-              rotateY: [0, 360],
-              opacity: [0.1, 0.4, 0.1],
-            }}
-            transition={{
-              duration: Math.random() * 25 + 15,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Surface Patterns */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+      {/* Professional Structural Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+      
+      {/* Texture for Premium "Paper" Feel in Light Mode */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] dark:opacity-[0.03] mix-blend-overlay"></div>
     </div>
   );
 };

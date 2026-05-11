@@ -4,7 +4,7 @@ import { Menu, X, Moon, Sun, BookOpen } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false); // DEFAULT TO LIGHT
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -16,12 +16,12 @@ const Header: React.FC = () => {
 
   const toggleTheme = () => {
     setIsDark(!isDark);
-    document.documentElement.classList.toggle('light');
+    document.documentElement.classList.toggle('dark');
   };
 
   return (
     <header 
-      className={`sticky top-0 z-[100] transition-all duration-700 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
         scrolled 
           ? 'py-4 bg-brand-bg/60 backdrop-blur-3xl border-b border-black/5 dark:border-white/5 shadow-2xl' 
           : 'py-8 bg-transparent'
@@ -30,49 +30,49 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-4 group">
-            <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-6">
-              <BookOpen className="w-7 h-7" />
+          <Link to="/" className="flex items-center gap-5 group">
+            <div className="w-16 h-16 bg-emerald-600 rounded-[1.5rem] flex items-center justify-center text-white shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-6">
+              <BookOpen className="w-9 h-9" />
             </div>
-            <span className="text-3xl font-black tracking-tighter text-brand-text">MathsAcademy</span>
+            <span className="text-4xl font-black tracking-tighter text-brand-text">MathsAcademy</span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-14">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/library">Curriculum</NavLink>
             <NavLink to="/pricing">Pricing</NavLink>
           </nav>
 
           {/* Actions */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-8">
             <button 
               onClick={toggleTheme}
-              className="p-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-2xl transition-all border border-black/10 dark:border-white/10 text-indigo-600 dark:text-indigo-400"
+              className="p-4 bg-brand-text/5 hover:bg-brand-text/10 rounded-[1.5rem] transition-all border border-brand-text/10 text-emerald-600 dark:text-emerald-400"
             >
-              {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+              {isDark ? <Sun className="w-7 h-7" /> : <Moon className="w-7 h-7" />}
             </button>
             <button 
               onClick={() => navigate('/login/student')}
-              className="px-8 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-brand-text rounded-2xl font-black transition-all border border-black/10 dark:border-white/10"
+              className="text-xl font-black text-brand-text hover:text-emerald-500 transition-colors"
             >
-              Student Portal
+              Portal
             </button>
             <button 
               onClick={() => navigate('/login/school')}
-              className="btn-primary"
+              className="btn-primary py-4 px-12 text-xl"
             >
-              School Login
+              Login
             </button>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center gap-4">
-             <button onClick={toggleTheme} className="p-2 text-brand-text transition-transform active:rotate-180">
-               {isDark ? <Sun className="w-7 h-7" /> : <Moon className="w-7 h-7" />}
+          <div className="lg:hidden flex items-center gap-6">
+             <button onClick={toggleTheme} className="p-2 text-brand-text">
+               {isDark ? <Sun className="w-8 h-8" /> : <Moon className="w-8 h-8" />}
              </button>
              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-brand-text">
-               {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+               {isMenuOpen ? <X className="w-10 h-10" /> : <Menu className="w-10 h-10" />}
              </button>
           </div>
         </div>
@@ -80,13 +80,12 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-brand-bg border-b border-black/10 dark:border-white/10 p-10 space-y-8 shadow-3xl animate-in slide-in-from-top duration-500">
-          <Link to="/" className="block text-3xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/library" className="block text-3xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Curriculum</Link>
-          <Link to="/pricing" className="block text-3xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
-          <div className="pt-8 border-t border-black/5 dark:border-white/5 space-y-6">
-            <button className="w-full btn-primary py-6 text-xl">School Access</button>
-            <button className="w-full py-6 bg-black/5 dark:bg-white/5 text-brand-text rounded-3xl font-black text-xl border border-black/10 dark:border-white/10">Student Portal</button>
+        <div className="lg:hidden absolute top-full left-0 w-full bg-brand-bg/98 backdrop-blur-3xl border-b border-black/5 dark:border-white/5 p-12 space-y-10 shadow-3xl">
+          <Link to="/" className="block text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to="/library" className="block text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Curriculum</Link>
+          <Link to="/pricing" className="block text-4xl font-black text-brand-text" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
+          <div className="pt-10 border-t border-black/5 space-y-8">
+            <button className="w-full btn-primary py-7 text-3xl">School Access</button>
           </div>
         </div>
       )}
@@ -100,7 +99,7 @@ const NavLink = ({ to, children }: { to: string, children: React.ReactNode }) =>
   return (
     <Link 
       to={to} 
-      className={`text-xl font-black transition-all hover:text-brand-text ${isActive ? 'text-brand-text underline decoration-indigo-600 dark:decoration-indigo-500 decoration-4 underline-offset-[12px]' : 'text-brand-muted'}`}
+      className={`text-2xl font-black transition-all hover:text-emerald-600 ${isActive ? 'text-emerald-600 underline underline-offset-[16px] decoration-4' : 'text-brand-text'}`}
     >
       {children}
     </Link>

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #1a1a1a;
+  background-color: #f8fafc;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-mymaths-dark;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary {
+  @apply bg-mymaths-blue text-white px-6 py-2 rounded-full font-semibold transition-all hover:bg-mymaths-dark hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-mymaths-green text-white px-6 py-2 rounded-full font-semibold transition-all hover:brightness-110 hover:shadow-lg active:scale-95;
+}
+
+.btn-outline {
+  @apply border-2 border-mymaths-blue text-mymaths-blue px-6 py-2 rounded-full font-semibold transition-all hover:bg-mymaths-blue hover:text-white active:scale-95;
+}

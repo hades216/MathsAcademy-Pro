@@ -15,18 +15,18 @@ const FloatingBackground: React.FC = () => {
   ];
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-brand-bg transition-colors duration-1000">
-      {/* Star Field */}
+      {/* Star Field - Only visible in dark mode or very faint in light mode */}
       <div className="absolute inset-0">
         {[...Array(200)].map((_, i) => (
           <div 
             key={i}
-            className="absolute bg-white rounded-full"
+            className="absolute rounded-full transition-colors duration-1000 bg-emerald-900/10 dark:bg-white"
             style={{
               width: Math.random() * 2 + 'px',
               height: Math.random() * 2 + 'px',
               top: Math.random() * 100 + '%',
               left: Math.random() * 100 + '%',
-              opacity: Math.random() * 0.5 + 0.2
+              opacity: Math.random() * 0.5 + 0.1
             }}
           />
         ))}
@@ -45,7 +45,7 @@ const FloatingBackground: React.FC = () => {
             ]
           }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="w-24 h-24 bg-yellow-400 rounded-full z-10 relative shadow-[0_0_80px_#fbbf24]"
+          className="w-24 h-24 bg-yellow-400 rounded-full z-10 relative shadow-[0_0_80px_#fbbf24] dark:shadow-[0_0_120px_#fbbf24]"
         />
 
         {/* Orbits and Planets */}
@@ -53,7 +53,7 @@ const FloatingBackground: React.FC = () => {
           <div key={i} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             {/* Orbit Path */}
             <div 
-              className="rounded-full border border-white/5"
+              className="rounded-full border border-black/5 dark:border-white/5 transition-colors duration-1000"
               style={{
                 width: planet.dist * 2,
                 height: planet.dist * 2,
@@ -91,11 +91,11 @@ const FloatingBackground: React.FC = () => {
         ))}
       </div>
 
-      {/* Atmospheric Space Haze */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/10 via-transparent to-emerald-900/10 mix-blend-overlay"></div>
+      {/* Atmospheric Space Haze - Light Sky in Day, Deep Nebula in Night */}
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-200/50 via-transparent to-emerald-200/50 dark:from-indigo-900/10 dark:to-emerald-900/10 mix-blend-overlay transition-colors duration-1000"></div>
       
       {/* Noise Texture */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] dark:opacity-[0.03] mix-blend-overlay"></div>
     </div>
   );
 };

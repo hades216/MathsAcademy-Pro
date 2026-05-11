@@ -4,6 +4,7 @@ import { Menu, X, Moon, Sun, BookOpen } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDark, setIsDark] = useState(false); // DEFAULT TO LIGHT
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8 relative">
             <button 
               onClick={toggleTheme}
               className="p-4 bg-brand-text/5 hover:bg-brand-text/10 rounded-[1.5rem] transition-all border border-brand-text/10 text-emerald-600 dark:text-emerald-400"
@@ -64,6 +65,23 @@ const Header: React.FC = () => {
             >
               Login
             </button>
+            <button 
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="p-4 bg-brand-text/5 hover:bg-brand-text/10 rounded-[1.5rem] transition-all border border-brand-text/10 text-brand-text"
+            >
+              {isDropdownOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            </button>
+
+            {/* Desktop Dropdown Menu */}
+            {isDropdownOpen && (
+              <div className="absolute top-full right-0 mt-4 w-64 bg-brand-bg/95 backdrop-blur-3xl border border-black/5 dark:border-white/5 p-6 rounded-[2rem] shadow-3xl flex flex-col gap-4">
+                <Link to="/dashboard/student" className="text-xl font-black text-brand-text hover:text-emerald-500 transition-colors" onClick={() => setIsDropdownOpen(false)}>Student Dashboard</Link>
+                <Link to="/dashboard/teacher" className="text-xl font-black text-brand-text hover:text-emerald-500 transition-colors" onClick={() => setIsDropdownOpen(false)}>Teacher Dashboard</Link>
+                <div className="border-t border-black/5 dark:border-white/5 my-2"></div>
+                <Link to="/pricing" className="text-xl font-black text-brand-text hover:text-emerald-500 transition-colors" onClick={() => setIsDropdownOpen(false)}>Plans & Pricing</Link>
+                <Link to="/get-started" className="text-xl font-black text-brand-text hover:text-emerald-500 transition-colors" onClick={() => setIsDropdownOpen(false)}>Help & Support</Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
